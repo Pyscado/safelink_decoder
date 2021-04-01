@@ -1,12 +1,12 @@
 import urllib.parse
 url = input("Enter SafeLink URL: ")
-url = url.split("&data=04")
-url = url[0]
-url = url.lstrip("https://nam11.safelinks,protection.outlook.com/?")
-url = url.lstrip("=")
+index = url.find("?url=")
+url = url[index:].lstrip("?url=")
+index = url.find("&data=04%C01%7C")
+url = url[:index]
 url = urllib.parse.unquote(url)
 print("\n",url,"\n")
 url = url.replace(".", "[.]")
 url = url.replace("http", "hxxp")
-print(url, "\n")
+print(url.lstrip("k[.]com/?url="), "\n")
 input("Press ENTER to quit")
